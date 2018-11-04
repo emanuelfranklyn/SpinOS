@@ -15,16 +15,12 @@ end
 
 function get(dono,repo,arquivo)
 if teste() then
-site2 = "https://raw.githubusercontent.com/"..dono.."/"repo.."/master/"..arquivo
+site2 =  "https://raw.githubusercontent.com/"..dono.."/"..repo.."/master/"..arquivo
 cont = http.get(site2)
---teste--
-print("https://raw.githubusercontent.com/"..dono.."/"..repo.."/master/"..arquivo)
-write(cont.readAll())
---testef--
+contread = cont.readAll()
 cont.close()
+return contread
 else
 teste()
 end
 end
---teste--
-get("emanuelfranklyn","computercraft","README.md")
