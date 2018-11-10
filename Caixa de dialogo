@@ -17,10 +17,7 @@ function buttons(pix,piy,pfy,btga,texto1,texto2,texto3)
 	paintutils.drawBox(x3+1,y,x3+1,y,colors.red)
 	term.setCursorPos(x3+1,y)
 	term.write("X")
-	if btga == nil then
-		btg = 0
-	else
-		btg = btga
+	btg = btga or 0
 	end
 	if btg == 0 then
 		while true do
@@ -116,12 +113,8 @@ function buttons(pix,piy,pfy,btga,texto1,texto2,texto3)
 end
 
 function messagebox(pix,piy,pfy,cor1,cor2)
-	if cor1 == nil then
-		cor1 = colors.lightBlue
-	end
-	if cor2 == nil then
-		cor2 = colors.gray
-	end
+	cor1 = cor1 or colors.lightBlue
+	cor2 = cor2 or colors.gray
 	variaveis(pix,piy,pfy)
 	paintutils.drawBox(x,y,x1,y1,cor1)
 	paintutils.drawFilledBox(x2,y2,x3,y3,cor2)
@@ -149,12 +142,8 @@ function messagebox(pix,piy,pfy,cor1,cor2)
 end
 
 function infomessagebox(pix,piy,pfy,nome,texto,cor1,cor2,bt)
-	if cor1 == nil then
-		cor1 = colors.lightBlue
-	end
-	if cor2 == nil then
-		cor2 = colors.gray
-	end
+	cor1 = cor1 or colors.lightBlue
+	cor2 = cor2 or colors.gray
 	variaveis(pix,piy,pfy)
 	messagebox(pix,piy,pfy,cor1,cor2)
 	paintutils.drawBox(0,0,0,0,cor1)
@@ -167,12 +156,8 @@ function infomessagebox(pix,piy,pfy,nome,texto,cor1,cor2,bt)
 end
 
 function erromessagebox(pix,piy,pfy,nome,texto,cor1,cor2,bt1,bt2)
-	if cor1 == nil then
-		cor1 = colors.lightBlue
-	end
-	if cor2 == nil then
-		cor2 = colors.gray
-	end
+	cor1 = cor1 or colors.lightBlue
+	cor2 = cor2 or colors.gray
 	variaveis(pix,piy,pfy)
 	messagebox(pix,piy,pfy,cor1,cor2)
 	paintutils.drawBox(0,0,0,0,cor1)
