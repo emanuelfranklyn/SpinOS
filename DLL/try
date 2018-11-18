@@ -1,0 +1,63 @@
+--vercao adaptada
+--link do forum usado: http://www.computercraft.info/forums2/index.php?/topic/29058-use-pcall-to-handle-errors/
+
+--{try(nome da funcao SEM () ) roda o codigo da funcao ate dar algum erro}
+--{catch( nome da funcao SEM () ) roda a funcao que voce deulhe ao chama-lo caso o try tenha ocorrido erro}--
+--{finally( nome da funcao SEM () )roda a funcao que voce deulhe ao chama-lo caso o try  NAO tenha ocorrido erro}--
+
+function loada()
+a = os.loadAPI("DLL/msgboxapi")
+if a == true then
+	return
+elseif a == false then
+	term.setCursorPos(1,1)
+	error("deu erro")
+end
+end
+
+function try(functiom)
+errose, mensagem = pcall(functiom)
+end
+
+function catch(jooj)
+	function rodar()
+		if errose == false then
+			jooj()
+		end
+	end
+	ab, ba = pcall(rodar)
+	if ab == false then
+		msgboxapi.erromessagebox(2,2,3,"Erro","Ocorreu um erro inesperado",nil,nil,"Continuar","Sair")
+	end
+end
+
+function finally(jaaj)
+	function rodar2()
+		if errose == true then
+			jaaj()
+		end
+	end
+	dc, cd = pcall(rodar2)
+	if dc == false then
+		msgboxapi.erromessagebox(2,2,3,"Erro","Ocorreu um erro inesperado",nil,nil,"Continuar","Sair")
+	end
+end
+
+function fatal()
+term.setTextColor(colors.red)
+term.setBackgroundColor(colors.black)
+term.clear()
+term.setCursorPos(1,1)
+term.write("Erro 404: modulo nao encontrado")
+term.setCursorPos(1,2)
+term.write(mensagem)
+term.setCursorPos(1,3)
+term.write(ba)
+term.setCursorPos(1,4)
+term.write(cd)
+sleep(5)
+os.reboot() 
+end
+
+try(loada)
+catch(fatal)
